@@ -38,7 +38,7 @@ export default GrowChart = createReactClass({
   }
 });
 
-/* submit and display data in a list - change to graph.
+/* submit it and display data in a list - change to graph.
 -------------------------------------------------------
 handleSubmit(event) {
     event.preventDefault();
