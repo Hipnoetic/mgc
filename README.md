@@ -7,6 +7,9 @@ Install Library / Dependencies using NPM
 
 $ npm i meteor
 
+Install MAC: 
+curl https://install.meteor.com/ | sh
+
 -React
 
 $ npm install react react-dom
@@ -19,4 +22,4 @@ $ npm i mongodb
 
 $ npm i react-chartjs-2 (This is the Chartjs library for using Reactjs) and just in case..
 
-$ npm install chart.js --save (this is the original chartjs from the documentation)
+$ npm install chartjs --save (this is the original chartjs from the documentation)
