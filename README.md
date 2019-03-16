@@ -6,6 +6,9 @@ Install Library / Dependencies using NPM
 -Meteor
 
 $ npm i meteor
+Install MAC: 
+curl https://install.meteor.com/ | sh
+Instal WIN:
 
 -React
 
