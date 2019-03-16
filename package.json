@@ -13,6 +13,7 @@
     "chartjs": "^0.3.24",
     "create-react-class": "^15.6.3",
     "meteor-node-stubs": "^0.4.1",
+    "mongodb": "^3.1.13",
     "react": "^16.8.4",
     "react-chartjs-2": "^2.7.4",
     "react-chartjs2": "^1.2.1",
