@@ -22,4 +22,4 @@ $ npm i mongodb
 
 $ npm i react-chartjs-2 (This is the Chartjs library for using Reactjs) and just in case..
 
-$ npm install chart.js --save (this is the original chartjs from the documentation)
+$ npm install chartjs --save (this is the original chartjs from the documentation)
