@@ -1,31 +1,15 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { withTracker } from 'meteor/react-meteor-data';
-import GrowChart from '../ui/Chart.js';
-import { GrowData } from '../api/growdata.js';
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import { withTracker } from "meteor/react-meteor-data";
+import GrowChart from "../ui/Chart.js";
+import { GrowData } from "../api/growdata.js";
+import Sensdata from "./Sensdata.js";
 
-import Task from './Task.js';
-
-// App component - represents the whole app
-class App extends React.Component {
-  handleSubmit(event) {
-    event.preventDefault();
-
-    // Find the text field via the React ref
-    const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
-
-    GrowData.insert({
-      text,
-      createdAt: new Date(), // current time
-    });
-
-    // Clear form
-    ReactDOM.findDOMNode(this.refs.textInput).value = '';
-  }
-
-  renderTasks() {
-    return this.props.tasks.map((task) => (
-      <Task key={task._id} task={task} />
+//class App extends React.Component {
+class App extends Component {
+  renderData() {
+    return this.props.growdata.map(sensor => (
+      <Sensdata key={sensor._id} sensor={sensor} />
     ));
   }
 
@@ -34,19 +18,9 @@ class App extends React.Component {
       <div className="container">
         <header>
           <GrowChart />
-          <h1>Todo List</h1>
-          <form className="new-task" onSubmit={this.handleSubmit.bind(this)} >
-            <input
-              type="text"
-              ref="textInput"
-              placeholder="Type to add new tasks"
-            />
-          </form>
+          <h1>Sensor List</h1>
         </header>
-
-        <ul>
-          {this.renderTasks()}
-        </ul>
+        <ul>{this.renderData()}</ul>
       </div>
     );
   }
@@ -54,6 +28,6 @@ class App extends React.Component {
 
 export default withTracker(() => {
   return {
-    tasks: GrowData.find({}).fetch(),
+    growdata: GrowData.find({}).fetch()
   };
 })(App);
