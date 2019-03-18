@@ -34,7 +34,7 @@ export default (GrowChart = createReactClass({
 
   render() {
     return (
-      <div>
+      <div class="chart-container" style="position: relative;">
         <h2>Grow Chart</h2>
         <Line data={data} />
       </div>
