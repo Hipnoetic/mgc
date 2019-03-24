@@ -1,19 +1,26 @@
-import React from "react";
 import { Line } from "react-chartjs-2";
 import moment from "moment";
-//import RC2 from '../../lib/index';
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import { withTracker } from "meteor/react-meteor-data";
+import { GrowData } from "../api/growdata.js";
+
+// Variables
 
 let now = moment();
+let tmin = [25, 25, 25, 25, 25, 25, 25, 25, 25, 25];
+let temp = [23, 26, 25, 29, 28, 24, 27, 26, 29, 23];
 
-const data = {
-  labels: ["12:08", "12:09", "12:10", "12:11", "12:12", "12:13", "12:14"],
+let data = {
+  labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
   datasets: [
     {
       label: "Temperature",
       backgroundColor: "rgba(255, 128, 0,  0.3)",
       borderColor: "rgba(255, 128, 0, 0.3)",
       fill: false, //no fill here
-      data: [25, 25, 23, 28, 29, 27, 31]
+      //data: temp
+      data: temp
     },
     {
       label: "tMin",
@@ -21,16 +28,18 @@ const data = {
       borderColor: "rgba(255, 128, 0,  0.4)",
       borderDash: [2],
       fill: "-1", //fill until previous dataset
-      data: [25, 25, 25, 25, 25, 25, 25]
+      data: tmin
     }
   ]
 };
 
-var createReactClass = require("create-react-class");
+// using creat-react-class package:
+//var createReactClass = require("create-react-class");
+//export default (GrowChart = createReactClass({
+// displayName: "GrowChart",
 
-export default (GrowChart = createReactClass({
-  //export default React.createClass({
-  displayName: "GrowChart",
+class Chart extends Component {
+  //new chartdata branch additions:
 
   render() {
     return (
@@ -40,4 +49,10 @@ export default (GrowChart = createReactClass({
       </div>
     );
   }
-}));
+}
+
+export default withTracker(() => {
+  return {
+    growdata: GrowData.find({}).fetch()
+  };
+})(Chart);
