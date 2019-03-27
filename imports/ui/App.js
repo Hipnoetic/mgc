@@ -22,7 +22,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container" width="90%">
         <div>{this.renderTempData()}</div>
         <header>
           <h1>Sensor List</h1>

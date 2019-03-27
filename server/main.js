@@ -10,4 +10,15 @@ Meteor.startup(function() {
     createdAt: Date().toString()
   });
   console.log(GrowData.find().fetch());
+
+
+  if(Meteor.isServer) {
+    Meteor.publish('GrowData', function() {
+      return GrowData.find({});
+    });
+  }
+  
+  if(Meteor.isClient) {
+    Meteor.subscribe('GrowData');
+  }
 });
